@@ -1,0 +1,45 @@
+import random
+import socket
+import struct
+
+from ipaddress import IPv4Network
+
+s=socket.socket()
+host = "192.168.0.4"
+port = 8888
+
+s.bind((host,port))
+
+s.listen(4)
+print("Waiting for connection")
+
+while True:
+	connection,address = s.accept()
+	data = connection.recv(2048).decode()
+	print (data)
+	if data == "yes":
+		ip=socket.inet_ntoa(struct.pack('>I', random.randint(1, 0xffffffff)))
+		print (str(ip))
+
+		data2 = connection.recv(2048).decode()
+		if data2 = i < 255
+			
+		numadd = net.num_addresses
+		submask = net.netmask
+		defgateway = net.network_address
+		print (str(net))
+
+		ip_add="Your IP Address =" + str(ip)
+		info= "number of address = "+ str(numadd)
+		info1= "Prefix = "+str(prx)
+		info2= "Subnet mask=" + str(submask)
+		info3= "Default gateway="+ str(defgateway)
+		infoAll= ip_add+"\n"+info+"\n"+info1+"\n"+info2+"\n"+info3+"\n"
+		connection.send (str.encode(infoAll))
+
+		print (infoAll)
+
+connection.close()
+
+s.close()
+
